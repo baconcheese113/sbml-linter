@@ -2,7 +2,7 @@
   "name": "sbml-linter",
   "displayName": "sbml-linter",
   "description": "Lints SBML files using libSBML",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "joseph-yannessa",
   "icon": "sbml-linter-icon.png",
   "repository": {
@@ -44,6 +44,13 @@
   "dependencies": {
     "fast-xml-parser": "^5.2.1"
   },
+  "files": [
+    "out/**/*",
+    "validator/sbml_validator.exe",
+    "LICENSE.md",
+    "README.md",
+    "sbml-linter-icon.png"
+  ],
   "volta": {
     "node": "22.15.0"
   }

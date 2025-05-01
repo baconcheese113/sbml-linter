@@ -10,3 +10,12 @@ vsc-extension-quickstart.md
 **/*.ts
 **/.vscode-test.*
 .env
+**/test/**
+**/*.test.ts
+**/*.test.js
+demo-*.gif
+CHANGELOG.md
+**/.eslintrc.json
+.github/**
+.prettierrc
+.prettierignore
