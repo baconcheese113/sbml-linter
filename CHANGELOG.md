@@ -4,6 +4,11 @@ All notable changes to the "SBML Linter" extension will be documented in this fi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v1.0.1] - 2025-05-01
+### Changed
+- Updated workflow configuration for automated publishing
+- Improve icon
+
 ## [v1.0.0] - 2025-05-01
 ### Added
 - Added extension icon
