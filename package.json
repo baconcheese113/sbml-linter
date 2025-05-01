@@ -36,5 +36,8 @@
   },
   "dependencies": {
     "fast-xml-parser": "^5.2.1"
+  },
+  "volta": {
+    "node": "22.15.0"
   }
 }

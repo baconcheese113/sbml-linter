@@ -40,8 +40,4 @@ This extension does not currently add any custom settings.
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-repo/sbml-linter).
-
-## License
-
-This extension is licensed under the MIT License. See the LICENSE file for details.
+Contributions are welcome! Please open an issue or submit a pull request.
