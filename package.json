@@ -3,6 +3,12 @@
   "displayName": "sbml-linter",
   "description": "Lints SBML files using libSBML",
   "version": "0.0.1",
+  "publisher": "joseph-yannessa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baconcheese113/sbml-linter.git"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.99.0"
   },
