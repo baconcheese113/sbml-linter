@@ -45,13 +45,15 @@ jobs:
         TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
         echo "Detected tag name: $TAG_NAME"
         
-        CHANGELOG=$(awk "/## \[${TAG_NAME}\]/,/^## /" CHANGELOG.md | sed '$d')
+        # Extract changelog section between the current version header and the next version header
+        CHANGELOG=$(sed -n "/## \[$TAG_NAME\]/,/## \[/p" CHANGELOG.md | head -n -1)
+        
         echo "Extracted changelog content:"
         echo "---"
         echo "$CHANGELOG"
         echo "---"
         
-        echo "Setting changelog output..."
+        # Properly format the output for GitHub Actions
         echo "changelog<<EOF" >> $GITHUB_OUTPUT
         echo "$CHANGELOG" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
