@@ -47,7 +47,9 @@ jobs:
         echo "EOF" >> $GITHUB_OUTPUT
 
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}

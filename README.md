@@ -1,5 +1,7 @@
 # SBML Linter
 
+![SBML Linter Demo](demo-1.gif)
+
 SBML Linter is a Visual Studio Code extension designed to lint SBML (Systems Biology Markup Language) files using the libSBML validator. It provides real-time feedback on SBML file issues, helping users ensure their models are valid and adhere to SBML standards.
 
 ## Features
@@ -31,12 +33,6 @@ This extension does not currently add any custom settings.
 
 - Non-SBML XML files may briefly trigger validation before being ignored.
 - The validator executable must be manually placed in the `validator` folder.
-
-## Release Notes
-
-### 0.0.1
-
-- Initial release with basic SBML validation and diagnostics.
 
 ## Contributing
 

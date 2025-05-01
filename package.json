@@ -2,8 +2,9 @@
   "name": "sbml-linter",
   "displayName": "sbml-linter",
   "description": "Lints SBML files using libSBML",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "joseph-yannessa",
+  "icon": "sbml-linter-icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/baconcheese113/sbml-linter.git"
