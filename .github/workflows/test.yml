@@ -5,8 +5,8 @@ on:
 
 jobs:
   test:
-    name: Test Extension
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}

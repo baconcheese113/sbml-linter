@@ -17,7 +17,9 @@ export function activate(context: vscode.ExtensionContext) {
     const filePath = document.fileName;
     const content = document.getText();
 
-    if (!filePath.endsWith('.xml') && !filePath.endsWith('.sbml')) return;
+    if (!filePath.endsWith('.xml') && !filePath.endsWith('.sbml')) {
+      return;
+    }
 
     // Check for <sbml> root
     let isSBML = false;
@@ -79,7 +81,9 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.workspace.onDidSaveTextDocument(validateDocument);
   vscode.workspace.onDidOpenTextDocument(validateDocument);
   vscode.window.onDidChangeActiveTextEditor(editor => {
-    if (editor) validateDocument(editor.document);
+    if (editor) {
+      validateDocument(editor.document);
+    }
   });
 
   if (vscode.window.activeTextEditor) {
