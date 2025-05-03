@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
   } else if (platform === 'linux') {
     exePath = path.join(context.extensionPath, 'validator', 'linux', 'sbml_validator');
   } else if (platform === 'darwin') {
-    exePath = path.join(context.extensionPath, 'validator', 'mac', 'sbml_validator_mac');
+    exePath = path.join(context.extensionPath, 'validator', 'mac', 'sbml_validator');
   }
 
   const validateDocument = (document: vscode.TextDocument) => {
