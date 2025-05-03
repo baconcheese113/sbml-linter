@@ -11,7 +11,16 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(diagnostics);
 
   const parser = new XMLParser({ ignoreAttributes: false });
-  const exePath = path.join(context.extensionPath, 'validator', 'sbml_validator.exe');
+
+  const platform = process.platform;
+  let exePath: string;
+  if (platform === 'win32') {
+    exePath = path.join(context.extensionPath, 'validator', 'sbml_validator.exe');
+  } else if (platform === 'linux') {
+    exePath = path.join(context.extensionPath, 'validator', 'sbml_validator');
+  } else if (platform === 'darwin') {
+    exePath = path.join(context.extensionPath, 'validator', 'sbml_validator_mac');
+  }
 
   const validateDocument = (document: vscode.TextDocument) => {
     const filePath = document.fileName;
