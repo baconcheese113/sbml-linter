@@ -13,6 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
   const parser = new XMLParser({ ignoreAttributes: false });
 
   const platform = process.platform;
+  console.log(`[SBML-Linter] Platform: ${platform}`);
   let exePath: string;
   if (platform === 'win32') {
     exePath = path.join(context.extensionPath, 'validator', 'windows', 'sbml_validator.exe');
