@@ -27,11 +27,19 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y xvfb
 
+    - name: Rebuild sbml_validator for macOS
+      if: runner.os == 'macOS'
+      run: |
+        clang++ -std=c++11 -mmacosx-version-min=10.15 -o validator/mac/sbml_validator sbml_validator.cpp \
+        -Lartifacts/MacOS-libSBML-5.20.4-stable-packages/lib -lsbml \
+        -Iartifacts/MacOS-libSBML-5.20.4-stable-packages/include
+
     - name: Run tests
       if: runner.os != 'Linux'
       run: npm test
       env:
         DISPLAY: ':99.0'
+        DYLD_LIBRARY_PATH: /Users/runner/work/sbml-linter/sbml-linter/artifacts/MacOS-libSBML-5.20.4-stable-packages/lib
 
     - name: Run tests on Linux
       if: runner.os == 'Linux'
