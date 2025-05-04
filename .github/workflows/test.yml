@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-15, macos-14, macos-13]
+        os: [ubuntu-latest, windows-latest, macos-15, macos-14]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -66,6 +66,7 @@ jobs:
       run: xvfb-run -a npm test
       env:
         DISPLAY: ':99.0'
+        LD_LIBRARY_PATH: ${{ github.workspace }}/validator/linux/lib
 
     - name: Run linting
       run: npm run lint
