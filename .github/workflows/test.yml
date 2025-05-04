@@ -5,10 +5,10 @@ on:
 
 jobs:
   test:
-    name: Test Extension
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest, macos-15, macos-14]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -18,11 +18,55 @@ jobs:
     - name: Setup Volta
       uses: volta-cli/action@v4
 
+    # - name: Install Linux dependencies
+    #   if: runner.os == 'Linux'
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y \
+    #       libnss3 \
+    #       libatk1.0-0t64 \
+    #       libatk-bridge2.0-0t64 \
+    #       libcups2t64 \
+    #       libdrm2 \
+    #       libxkbcommon0 \
+    #       libxcomposite1 \
+    #       libxdamage1 \
+    #       libxfixes3 \
+    #       libxrandr2 \
+    #       libgbm1 \
+    #       libasound2t64 \
+    #       libxshmfence1 \
+    #       libgtk-3-0t64 \
+    #       xvfb
+
+    # - name: Setup Linux permissions for validator binary
+    #   if: runner.os == 'Linux'
+    #   run: |
+    #     echo "Setting executable permissions for Linux validator"
+    #     chmod +x ./validator/linux/sbml_validator
+    #     ls -la ./validator/linux/
+
     - name: Install dependencies
       run: npm ci
 
+    # - name: Install xvfb on Linux
+    #   if: runner.os == 'Linux'
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y xvfb
+
     - name: Run tests
+      if: runner.os != 'Linux'
       run: npm test
+      env:
+        DISPLAY: ':99.0'
+
+    # - name: Run tests on Linux
+    #   if: runner.os == 'Linux'
+    #   run: xvfb-run -a npm test
+    #   env:
+    #     DISPLAY: ':99.0'
+    #     LD_LIBRARY_PATH: ${{ github.workspace }}/validator/linux/lib
 
     - name: Run linting
       run: npm run lint

@@ -46,7 +46,11 @@
   },
   "files": [
     "out/**/*",
-    "validator/sbml_validator.exe",
+    "validator/windows/sbml_validator.exe",
+    "validator/linux/sbml_validator",
+    "validator/linux/lib/*",
+    "validator/mac/sbml_validator",
+    "validator/mac/lib/*",
     "LICENSE.md",
     "README.md",
     "sbml-linter-icon.png"
