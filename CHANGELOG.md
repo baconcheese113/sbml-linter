@@ -4,6 +4,10 @@ All notable changes to the "SBML Linter" extension will be documented in this fi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v1.1.0] - 2025-05-03
+### Added
+- Support for macOS platform
+
 ## [v1.0.3] - 2025-05-01
 ### Changed
 - Publish release notes corectly
