@@ -15,10 +15,12 @@ export function activate(context: vscode.ExtensionContext) {
   const platform = process.platform;
   console.log(`[SBML-Linter] Platform: ${platform}`);
   let exePath: string;
+  let validatorDir: string;
   if (platform === 'win32') {
     exePath = path.join(context.extensionPath, 'validator', 'windows', 'sbml_validator.exe');
   } else if (platform === 'linux') {
-    exePath = path.join(context.extensionPath, 'validator', 'linux', 'sbml_validator');
+    validatorDir = path.join(context.extensionPath, 'validator', 'linux');
+    exePath = path.join(validatorDir, 'sbml_validator');
   } else if (platform === 'darwin') {
     exePath = path.join(context.extensionPath, 'validator', 'mac', 'sbml_validator');
   }
@@ -56,8 +58,17 @@ export function activate(context: vscode.ExtensionContext) {
     // Run validator
     const start = Date.now();
     try {
-      const output = cp.execFileSync(exePath, [filePath], { encoding: 'utf8' });
-      const results = JSON.parse(output.trim());
+      const execOptions: cp.ExecFileOptions = {
+        env: process.platform === 'linux' 
+          ? {
+              ...process.env,
+              LD_LIBRARY_PATH: validatorDir
+            }
+          : process.env
+      };
+      
+      const output = cp.execFileSync(exePath, [filePath], execOptions);
+      const results = JSON.parse(output.toString().trim());
       console.log(`[SBML-Linter] Validator completed in ${Date.now() - start}ms`);
 
       const fileDiagnostics: vscode.Diagnostic[] = results.map((e: any) => {
